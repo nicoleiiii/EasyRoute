@@ -11,19 +11,23 @@ import org.osmdroid.views.MapView
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory
 
 @Composable
-fun MapScreen() {
+fun OSMMap() {
     val context = LocalContext.current
+    AndroidView(factory = { ctx ->
+        val mapView = org.osmdroid.views.MapView(ctx)
+        mapView.setTileSource(org.osmdroid.tileprovider.tilesource.TileSourceFactory.MAPNIK)
+        mapView.setMultiTouchControls(true)
 
-    val mapView = MapView(context).apply {
-        setTileSource(TileSourceFactory.MAPNIK)
-        controller.setZoom(15.0)
-        controller.setCenter(GeoPoint(14.5995, 120.9842)) // Manila
-    }
-
-    AndroidView(factory = { mapView }, modifier = Modifier.fillMaxSize())
+        val mapController = mapView.controller
+        mapController.setZoom(15.0)
+        val startPoint = org.osmdroid.util.GeoPoint(14.5995, 120.9842) // Manila
+        mapController.setCenter(startPoint)
+        mapView
+    }, modifier = Modifier.fillMaxSize())
 }
+
 
 @Composable
 fun EasyRouteApp() {
-    MapScreen()
+    OSMMap()
 }

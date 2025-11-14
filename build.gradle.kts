@@ -4,3 +4,17 @@ plugins {
     alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.kotlin.compose) apply false
 }
+
+buildscript {
+    dependencies {
+        // Required for older setups, optional if using plugins block
+        classpath("com.android.tools.build:gradle:8.2.0")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.0")
+    }
+}
+
+// Remove allprojects block, no repositories here
+
+tasks.register("clean", Delete::class) {
+    delete(rootProject.buildDir)
+}
