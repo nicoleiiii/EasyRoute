@@ -35,7 +35,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             MaterialTheme {
                 Surface {
-                    com.example.easyroute.ui.OSMMapScreen()
+                    com.example.easyroute.ui.MapScreen()
                 }
             }
         }

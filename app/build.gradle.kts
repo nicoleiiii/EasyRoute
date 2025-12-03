@@ -40,7 +40,7 @@ android {
 }
 
 dependencies {
-
+    // --- Android & Compose Standard Libraries (Keep using your Version Catalog) ---
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -49,6 +49,8 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+
+    // Testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -57,12 +59,20 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    // OSM Map
-    implementation("org.osmdroid:osmdroid-android:6.1.10")
+    // --- NEW: OpenStreetMap (OSMDroid) ---
+    // Updated to 6.1.18 (Latest Stable)
+    implementation("org.osmdroid:osmdroid-android:6.1.18")
 
-    // Networking for Nominatim & GraphHopper
+    // --- NEW: Networking for OpenRouteService ---
+    // Retrofit (Handles the HTTP connection to your local Docker container)
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
+
+    // Moshi (Handles JSON parsing)
     implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
-    implementation("com.squareup.okhttp3:okhttp:4.11.0")
     implementation("com.squareup.moshi:moshi-kotlin:1.15.0")
+
+    // OkHttp & Logging (Crucial for debugging local connections)
+    implementation("com.squareup.okhttp3:okhttp:4.11.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
+
 }
