@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("org.jetbrains.kotlin.kapt")
+
 }
 
 android {
@@ -37,6 +39,9 @@ android {
     buildFeatures {
         compose = true
     }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.3" // Or a version compatible with your BOM
+    }
 }
 
 dependencies {
@@ -49,6 +54,8 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.foundation)
+
 
     // Testing
     testImplementation(libs.junit)
@@ -58,6 +65,12 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+
+    implementation("androidx.compose.material:material-icons-extended")
+
+
+    implementation("androidx.preference:preference-ktx:1.2.1")
 
     // --- NEW: OpenStreetMap (OSMDroid) ---
     // Updated to 6.1.18 (Latest Stable)
@@ -74,5 +87,20 @@ dependencies {
     // OkHttp & Logging (Crucial for debugging local connections)
     implementation("com.squareup.okhttp3:okhttp:4.11.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
+
+    // Room components
+    implementation("androidx.room:room-runtime:2.8.4")
+
+    // Room with Kotlin coroutines
+    implementation("androidx.room:room-ktx:2.8.4")
+
+    //Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
+
+    // Kotlin KAPT for Room
+    add("kapt", "androidx.room:room-compiler:2.8.4")
+
+    // AppCompat for activities
+    implementation("androidx.appcompat:appcompat:1.6.1")
 
 }

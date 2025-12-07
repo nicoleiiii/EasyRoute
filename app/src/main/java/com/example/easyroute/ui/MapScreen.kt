@@ -1,5 +1,6 @@
 package com.example.easyroute.ui
 
+
 import android.Manifest
 import android.content.pm.PackageManager
 import android.graphics.Color as AndroidColor
@@ -14,6 +15,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
@@ -26,12 +28,17 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
+import androidx.compose.ui.draw.clip
+import androidx.compose.material.icons.filled.LocationOn
+import androidx.compose.material.icons.filled.DirectionsCar
+import androidx.compose.material.icons.filled.Logout
 import com.example.easyroute.data.JeepneyData
 import com.example.easyroute.data.NominatimClient
 import com.example.easyroute.data.OsrmClient
 import com.example.easyroute.data.SearchResult
 import com.example.easyroute.model.JeepneyRoute
 import com.example.easyroute.model.SegmentType
+import com.example.easyroute.ui.LoginScreenComposable
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -45,11 +52,12 @@ import org.osmdroid.views.overlay.Polyline
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay
 
+
 // Note: addJeepneyStopMarker is accessed from MapUtils.kt
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MapScreen() {
+fun MapScreen(onLogout: () -> Unit) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
 
@@ -309,6 +317,7 @@ fun MapScreen() {
                     color = Color.Black
                 )
             }
+
         }
 
         // 3. SEARCH & DROPDOWN (Updated placement with safe padding)
@@ -422,27 +431,108 @@ fun MapScreen() {
             }
         }
 
-        // 4. REFRESH BUTTON (Updated placement with safe padding)
-        if (selectedRoute != null) {
-            FloatingActionButton(
-                modifier = Modifier
-                    .align(Alignment.BottomEnd)
-                    // Pushes button up above the navigation bar
-                    .navigationBarsPadding()
-                    .padding(16.dp),
-                onClick = {
-                    val overlay = mapViewState?.overlays?.firstOrNull { it is MyLocationNewOverlay } as? MyLocationNewOverlay
-                    if (overlay?.myLocation != null) userLocation = overlay.myLocation
-
-                    if (estimatedTimeText.isNotEmpty() && destinationMarker != null) {
-                        mapViewState?.let { multiRouteToDestination(it, destinationMarker!!.position, userLocation) }
-                    } else {
-                        mapViewState?.let { loadRoadBasedRoute(it, selectedRoute!!, userLocation) }
-                    }
-                }
-            ) { Text("↻") }
-        }
 
         if (isLoading) CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+
+        // 5. MAP FOOTER (New Element, placed last to draw on top)
+        MapFooter(
+            mapViewState = mapViewState,
+            estimatedTimeText = estimatedTimeText,
+            onLogout = onLogout,
+            // 🌟 ADD THIS MODIFIER 🌟
+            modifier = Modifier.align(Alignment.BottomCenter)
+        )
+    }
+
+
+}
+
+@Composable
+fun MapFooter(
+    mapViewState: MapView?,
+    estimatedTimeText: String,
+    onLogout: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    val greenAccent = Color(0xFF4CAF50)
+    val yellowAccent = Color(0xFFFFC107)
+    val grayAccent = Color(0xFF333333)
+    val semiTransparentBackground = Color.Black.copy(alpha = 0.65f)
+    val myLocationOverlay = mapViewState?.overlays?.firstOrNull { it is MyLocationNewOverlay } as? MyLocationNewOverlay
+    val context = LocalContext.current
+
+    Row(
+        modifier = modifier
+            .fillMaxWidth()
+            .heightIn(min = 70.dp)
+            .clip(RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp))
+            .background(semiTransparentBackground)
+            .padding(horizontal = 24.dp, vertical = 12.dp)
+            .navigationBarsPadding(),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        // 1. Location Icon (Center Map on User)
+        IconButton(
+            onClick = {
+                if (myLocationOverlay?.myLocation != null) {
+                    // Center the map on the user's current location.
+                    mapViewState?.controller?.animateTo(myLocationOverlay.myLocation, 17.0, 1000L)
+                } else {
+                    Toast.makeText(context, "Location not available", Toast.LENGTH_SHORT).show()
+                }
+            },
+            modifier = Modifier.size(48.dp)
+        ) {
+            Icon(
+                imageVector = Icons.Default.LocationOn,
+                contentDescription = "Reload Location",
+                tint = yellowAccent, // Use yellow accent
+                modifier = Modifier.size(28.dp)
+            )
+        }
+
+        // 2. Route Icon & Estimated Time Text
+        // 2. Route Icon & Estimated Time Text
+        // 2. Route Icon & Estimated Time Text
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            // 🌟 MODIFIED: Use spacedBy(8.dp) to define spacing between items, or remove it entirely
+            // to place content at the start (left) of the available space.
+            // If you remove horizontalArrangement, it defaults to Arrangement.Start.
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            modifier = Modifier.weight(1f) // Takes up available space
+        ) {
+            // Spacer to push the group slightly away from the Location Icon on the far left.
+            // Adjust the size (e.g., 20.dp) to control the left padding/indentation.
+            Spacer(modifier = Modifier.width(20.dp))
+
+            // Icon (Car)
+            Icon(
+                imageVector = Icons.Default.DirectionsCar, // Route Icon
+                contentDescription = "Estimated Time",
+                tint = greenAccent, // Use green accent
+                modifier = Modifier.size(28.dp)
+            )
+
+            // Text
+            Text(
+                text = if (estimatedTimeText.isNotEmpty()) estimatedTimeText else "No Route Selected",
+                color = Color.White,
+                style = MaterialTheme.typography.titleMedium
+            )
+        }
+        // 3. Logout Icon
+        IconButton(
+            onClick = onLogout,
+            modifier = Modifier.size(48.dp)
+        ) {
+            Icon(
+                imageVector = Icons.Default.Logout,
+                contentDescription = "Logout",
+                tint = Color(0xFFE53935), // Use gray accent
+                modifier = Modifier.size(28.dp)
+            )
+        }
     }
 }
