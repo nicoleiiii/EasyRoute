@@ -14,51 +14,49 @@ object JeepneyData {
     val routes = listOf(
         JeepneyRoute("route1", "CHECKPOINT - HOLY - HIGHWAY", "#8989ff", listOf(
             JeepneyStop("Highway Terminal", GeoPoint(15.1670069, 120.5802458)),
-            JeepneyStop("Angeles City Hall", GeoPoint(15.1692110, 120.5867240)),
-            JeepneyStop("Marisol Terminal", GeoPoint(15.1518836, 120.5915452)),
-            JeepneyStop("Holy Family Hospital", GeoPoint(15.1372074, 120.5864935)),
-            JeepneyStop("Holy Rosary Parish Church", GeoPoint(15.1347703, 120.5905817)),
-            JeepneyStop("SM Clark", GeoPoint(15.1429697, 120.5965464)),
-            JeepneyStop("AUF", GeoPoint(15.1456720, 120.5950569)),
-            JeepneyStop("Highway Terminal", GeoPoint(15.1670069, 120.5802458))
-
-        )),
-        JeepneyRoute("route2", "HOLY - HIGHWAY - CHECKPOINT", "#8989ff", listOf(
+            JeepneyStop("Clarkfield Baptist Church", GeoPoint(15.1692110, 120.5867240)),
             JeepneyStop("Checkpoint Terminal", GeoPoint(15.1518836, 120.5915452)),
             JeepneyStop("Holy Family Hospital", GeoPoint(15.1372074, 120.5864935)),
             JeepneyStop("Holy Rosary Parish Church", GeoPoint(15.1347703, 120.5905817)),
-            JeepneyStop("SM Clark", GeoPoint(15.1429697, 120.5965464)),
+            JeepneyStop("Roundabout", GeoPoint(15.1429697, 120.5965464)),
             JeepneyStop("AUF", GeoPoint(15.1460053, 120.5949980)),
-            JeepneyStop("Angeles City Hall", GeoPoint(15.1692110, 120.5867240)),
+            JeepneyStop("Clarkfield Baptist Church", GeoPoint(15.1692110, 120.5867240)),
             JeepneyStop("Highway Terminal", GeoPoint(15.1670069, 120.5802458))
         )),
-        JeepneyRoute("route3", "MARISOL - PAMPANG", "#2ECC71", listOf(
+        JeepneyRoute("route2", "MARISOL - PAMPANG", "#2ECC71", listOf(
             JeepneyStop("Marisol Terminal", GeoPoint(15.1514673, 120.5911618)),
-            JeepneyStop("Pampang Public Market", GeoPoint(15.1450051, 120.5887022)),
-            JeepneyStop("Plaridel", GeoPoint(15.1380867, 120.5886441)),
+            JeepneyStop("Cleantech", GeoPoint(15.1514743, 120.5924792)),
+            JeepneyStop("Roundabout", GeoPoint(15.1429697, 120.5965464)),
             JeepneyStop("Holy Rosary Parish Church", GeoPoint(15.1347703, 120.5905817)),
-            JeepneyStop("SM Clark", GeoPoint(15.1429697, 120.5965464)),
-            JeepneyStop("Pampang Terminal", GeoPoint(15.1514743, 120.5924792))
+            JeepneyStop("System Plus College Foundation (Miranda)", GeoPoint(15.1380022, 120.5885291)),
+            JeepneyStop("Old PNR Station", GeoPoint(15.1448259, 120.5908088)),
+            JeepneyStop("Marisol Terminal", GeoPoint(15.1514673, 120.5911618))
         )),
-        JeepneyRoute("route4", "PAMPANG - MARISOL", "#2ECC71", listOf(
-            JeepneyStop("Marisol Market", GeoPoint(15.1463300, 120.5862477)),
-            JeepneyStop("Pampang Public Market", GeoPoint(15.1450026, 120.5886574)),
-            JeepneyStop("Holy Family Hospital", GeoPoint(15.1372074, 120.5864935)),
-            JeepneyStop("Holy Rosary Parish Church", GeoPoint(15.1347703, 120.5905817)),
-            JeepneyStop("SM Clark", GeoPoint(15.1429697, 120.5965464)),
-            JeepneyStop("Pampang Terminal", GeoPoint(15.1514743, 120.5924792))
-        )),
-        JeepneyRoute("route5", "CAPAYA - ANGELES", "#ff70ff", listOf(
+        JeepneyRoute("route3", "CAPAYA - ANGELES", "#ff70ff", listOf(
             JeepneyStop("Capaya Terminal", GeoPoint(15.1464343, 120.6141124)),
             JeepneyStop("Capaya Market", GeoPoint(15.1499977, 120.6145657)),
-            JeepneyStop("Angeles University", GeoPoint(15.1536670, 120.6047337)),
-            JeepneyStop("Robinsons Angeles", GeoPoint(15.1438748, 120.5971975)),
-            JeepneyStop("SM Clark", GeoPoint(15.1427392, 120.5965313)),
-            JeepneyStop("Holy Rosary Parish Church", GeoPoint(15.1347703, 120.5905817)),
-            JeepneyStop("Pampang Crossing", GeoPoint(15.1380213, 120.5888340)),
-            JeepneyStop("Holy Family Hospital", GeoPoint(15.1372241, 120.5864738)),
-            JeepneyStop("Angeles City Proper", GeoPoint(15.1378667, 120.5886299))
-        ))
+            JeepneyStop("Jollibee Pandan", GeoPoint(15.1536670, 120.6047337)),
+            JeepneyStop("Southstar DrugStore", GeoPoint(15.1433483, 120.5972143)),
+            JeepneyStop("Roundabout", GeoPoint(15.1429697, 120.5965464)),
+            JeepneyStop("Capaya Terminal", GeoPoint(15.1382323, 120.5902544)),
+            JeepneyStop("RepubliC Central Colleges", GeoPoint(15.1391817, 120.5902621)),
+            JeepneyStop("MPS Memorial Homes", GeoPoint(15.1379359, 120.5925702)),
+            JeepneyStop("Jollibee Pandan", GeoPoint(15.1536670, 120.6047337)),
+            JeepneyStop("Capaya Terminal", GeoPoint(15.1464343, 120.6141124)),
+        )),
+        JeepneyRoute("route4", "PANDAN", "#1E88E5", listOf(
+            JeepneyStop("Pandan Terminal", GeoPoint(15.1378373,120.5889416)),
+            JeepneyStop("RepubliC Central Colleges", GeoPoint(15.1391817, 120.5902621)),
+            JeepneyStop("MPS Memorial Homes", GeoPoint(15.1379359, 120.5925702)),
+            JeepneyStop("Jollibee Pandan", GeoPoint(15.1536670, 120.6047337)),
+            JeepneyStop("Marquee Mall Terminal", GeoPoint(15.1619766, 120.6069153)),
+            JeepneyStop("Intersection", GeoPoint(15.1460617,120.5992527)),
+            JeepneyStop("Roundabout", GeoPoint(15.1429697, 120.5965464)),
+            JeepneyStop("Landbank Miranda", GeoPoint(15.1360426,120.5913501)),
+            JeepneyStop("Pandan Terminal", GeoPoint(15.1378373,120.5889416))
+        )),
+
+
     )
 
     // Helper: Find nearest stop (used in UI and Logic)
