@@ -15,26 +15,28 @@ object JeepneyData {
         JeepneyRoute("route1", "CHECKPOINT - HOLY - HIGHWAY", "#8989ff", listOf(
             JeepneyStop("Highway Terminal", GeoPoint(15.1670069, 120.5802458)),
             JeepneyStop("Angeles City Hall", GeoPoint(15.1692110, 120.5867240)),
-            JeepneyStop("AUF", GeoPoint(15.1456720, 120.5950569)),
-            JeepneyStop("SM Clark", GeoPoint(15.1429697, 120.5965464)),
-            JeepneyStop("Nepo Mart", GeoPoint(15.1355259, 120.5910899)),
+            JeepneyStop("Marisol Terminal", GeoPoint(15.1518836, 120.5915452)),
             JeepneyStop("Holy Family Hospital", GeoPoint(15.1372074, 120.5864935)),
-            JeepneyStop("Checkpoint Terminal", GeoPoint(15.1518836, 120.5915452))
+            JeepneyStop("Holy Rosary Parish Church", GeoPoint(15.1347703, 120.5905817)),
+            JeepneyStop("SM Clark", GeoPoint(15.1429697, 120.5965464)),
+            JeepneyStop("AUF", GeoPoint(15.1456720, 120.5950569)),
+            JeepneyStop("Highway Terminal", GeoPoint(15.1670069, 120.5802458))
+
         )),
         JeepneyRoute("route2", "HOLY - HIGHWAY - CHECKPOINT", "#8989ff", listOf(
             JeepneyStop("Checkpoint Terminal", GeoPoint(15.1518836, 120.5915452)),
             JeepneyStop("Holy Family Hospital", GeoPoint(15.1372074, 120.5864935)),
-            JeepneyStop("Nepo Mart", GeoPoint(15.1355259, 120.5910899)),
+            JeepneyStop("Holy Rosary Parish Church", GeoPoint(15.1347703, 120.5905817)),
             JeepneyStop("SM Clark", GeoPoint(15.1429697, 120.5965464)),
             JeepneyStop("AUF", GeoPoint(15.1460053, 120.5949980)),
             JeepneyStop("Angeles City Hall", GeoPoint(15.1692110, 120.5867240)),
             JeepneyStop("Highway Terminal", GeoPoint(15.1670069, 120.5802458))
         )),
         JeepneyRoute("route3", "MARISOL - PAMPANG", "#2ECC71", listOf(
-            JeepneyStop("Marisol Market", GeoPoint(15.1463300, 120.5862477)),
-            JeepneyStop("Pampang Public Market", GeoPoint(15.1450026, 120.5886574)),
-            JeepneyStop("Holy Family Hospital", GeoPoint(15.1372074, 120.5864935)),
-            JeepneyStop("Nepo Mart", GeoPoint(15.1355259, 120.5910899)),
+            JeepneyStop("Marisol Terminal", GeoPoint(15.1514673, 120.5911618)),
+            JeepneyStop("Pampang Public Market", GeoPoint(15.1450051, 120.5887022)),
+            JeepneyStop("Plaridel", GeoPoint(15.1380867, 120.5886441)),
+            JeepneyStop("Holy Rosary Parish Church", GeoPoint(15.1347703, 120.5905817)),
             JeepneyStop("SM Clark", GeoPoint(15.1429697, 120.5965464)),
             JeepneyStop("Pampang Terminal", GeoPoint(15.1514743, 120.5924792))
         )),
@@ -42,7 +44,7 @@ object JeepneyData {
             JeepneyStop("Marisol Market", GeoPoint(15.1463300, 120.5862477)),
             JeepneyStop("Pampang Public Market", GeoPoint(15.1450026, 120.5886574)),
             JeepneyStop("Holy Family Hospital", GeoPoint(15.1372074, 120.5864935)),
-            JeepneyStop("Nepo Mart", GeoPoint(15.1355259, 120.5910899)),
+            JeepneyStop("Holy Rosary Parish Church", GeoPoint(15.1347703, 120.5905817)),
             JeepneyStop("SM Clark", GeoPoint(15.1429697, 120.5965464)),
             JeepneyStop("Pampang Terminal", GeoPoint(15.1514743, 120.5924792))
         )),
@@ -51,8 +53,8 @@ object JeepneyData {
             JeepneyStop("Capaya Market", GeoPoint(15.1499977, 120.6145657)),
             JeepneyStop("Angeles University", GeoPoint(15.1536670, 120.6047337)),
             JeepneyStop("Robinsons Angeles", GeoPoint(15.1438748, 120.5971975)),
-            JeepneyStop("SM Clark", GeoPoint(15.1429697, 120.5965464)),
-            JeepneyStop("Nepo Center", GeoPoint(15.1360392, 120.5914577)),
+            JeepneyStop("SM Clark", GeoPoint(15.1427392, 120.5965313)),
+            JeepneyStop("Holy Rosary Parish Church", GeoPoint(15.1347703, 120.5905817)),
             JeepneyStop("Pampang Crossing", GeoPoint(15.1380213, 120.5888340)),
             JeepneyStop("Holy Family Hospital", GeoPoint(15.1372241, 120.5864738)),
             JeepneyStop("Angeles City Proper", GeoPoint(15.1378667, 120.5886299))
